@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
 name: CI
 
 on: [push]
@@ -5,7 +6,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -24,11 +25,11 @@ jobs:
         path: ${{ github.workspace }}/theos
         key: ${{ runner.os }}-${{ steps.verify-cache.outputs.heads }}
 
-# Don't use @main, this repo is specifically for testing it.
     - name: Prepare Theos
       uses: Randomblock1/theos-action@main
+      # Don't use @main in production, this repo is specifically for testing it.
       with:
-        theos-sdks: 'https://github.com/xybp888/iOS-SDKs'
+        theos-sdks: 'https://github.com/theos/sdks'
       
     - name: Build package
       run: |
