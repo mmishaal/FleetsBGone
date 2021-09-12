@@ -26,10 +26,8 @@ jobs:
         key: ${{ runner.os }}-${{ steps.verify-cache.outputs.heads }}
 
     - name: Prepare Theos
-      uses: Randomblock1/theos-action@main
       # Don't use @main in production, this repo is specifically for testing it.
-      with:
-        theos-sdks: 'https://github.com/theos/sdks'
+      uses: Randomblock1/theos-action@main
       
     - name: Build package
       run: |
