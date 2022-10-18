@@ -30,8 +30,9 @@ jobs:
       
     - name: Build package
       run: |
+        export PATH=\"$(brew --prefix make)/libexec/gnubin:\$PATH\"
         rm -f packages/*
-        gmake package FINALPACKAGE=1
+        make package FINALPACKAGE=1
 
     - name: Upload package
       uses: actions/upload-artifact@v3
