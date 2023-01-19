@@ -31,7 +31,6 @@ jobs:
 
       - name: Build package
         run: |
-          export PATH="$(brew --prefix make)/libexec/gnubin:$PATH"
           rm -f packages/*
           make package FINALPACKAGE=1
 
